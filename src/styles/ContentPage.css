@@ -109,6 +109,12 @@
     margin-right: 20px;
 }
 
+.headings-row {
+    background-color: #FE3E12;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .content-headings-row {
     display: flex;
     flex-direction: row;
@@ -120,6 +126,38 @@
     padding-right: 5px;
     height: 85px;
     border-bottom: #000 1px solid;
+}
+
+.question-heading {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.genre-heading {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-heading {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.actions-empty-heading {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .content-heading {
@@ -149,6 +187,24 @@
     justify-content: center;
 }
 
+.content-options {
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.content-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex:1;
+    margin-right: 20px;
+}
+
+
 .content-question{
     font-weight: 400;
     font-size: 18px;
@@ -157,8 +213,8 @@
 }
 
 .content-genre{
-    font-weight: 400;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 11px;
     text-align: center;
     color: #000;
     margin-left:5px;
@@ -171,8 +227,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 25px;
-    border-radius: 10px;
+    height: 22px;
+    border-radius: 15px;
 }
 
 .content-update-btn {
@@ -181,10 +237,32 @@
 
 .content-delete-btn {
     background-color: #FE3E12;
+    margin-left: 30px;
 }
 
 .content-update-btn, .content-delete-btn {
     width: 40px;
     height: 40px;
     border-radius: 100px;
+}
+
+.option-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.paired-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.option-text {
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }

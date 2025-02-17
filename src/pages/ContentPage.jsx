@@ -1,6 +1,12 @@
 import '../styles/ContentPage.css'
 function ContentPage(){
-  const data = [{id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies'}]
+  const data = [
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+  ]
     return(
       <div className="content-container">
         <div className="add-content">
@@ -32,16 +38,16 @@ function ContentPage(){
 
           <div className='all-content-table'>
           <div className="headings-row">
-            <div className="heading">
+            <div className="question-heading">
               <h6 className="heading-text">Question</h6>
             </div>
-            <div className="heading">
+            <div className="genre-heading">
               <h6 className="heading-text">Genre</h6>
             </div>
-            <div className="heading">
+            <div className="options-heading">
               <h6 className="heading-text">Options</h6>
             </div>
-            <div className="heading">
+            <div className="actions-empty-heading">
             </div>
           </div>
           {
@@ -56,7 +62,26 @@ function ContentPage(){
                   </div>
                 </div>
                 <div className="content-options">
-                  
+
+                  <div className='paired-options'>
+                  {
+                    item.options.filter((i,index)=>index < 2).map(option=>(
+                        <div className='option-container'>
+                          <h5 className='option-text'>{option}</h5>
+                        </div>
+                    )) 
+                  }
+                </div>
+
+                <div className='paired-options'>
+                  {
+                    item.options.filter((i,index)=>index > 1).map(option=>(
+                        <div className='option-container'>
+                          <h5 className='option-text'>{option}</h5>
+                        </div>
+                    )) 
+                  }
+                </div>  
                 </div>
                 <div className="content-actions">
                   <div className='content-update-btn'>
