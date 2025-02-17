@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import AuthHeaderComp from '../components/AuthHeaderComp'
 import HomeHeaderComp from '../components/HomeHeaderComp'
 
@@ -10,7 +10,8 @@ import PaymentPage from '../pages/PaymentPage'
 import VerificationPage from '../pages/VerificationPage'
 
 function RouterComp(){
-    const a = true
+    const a = false
+    //check if authenticated to switch between headers
     function renderHeader () {
         if(a == true)
             return <AuthHeaderComp/>
