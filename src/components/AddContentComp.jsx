@@ -1,7 +1,7 @@
 import { useState } from "react"
 import RadionButtonComp from "./RadioButtonComp"
 
-function AddContentComp() {
+function AddContentComp({genres}) {
     const [options, setOptions] = useState([
         {name:'Transformers', isSelected:false},
         {name:'Avengers', isSelected:false},
@@ -43,6 +43,9 @@ function AddContentComp() {
             <h4 className='add-content-text'>Add Content</h4>
             <select className='choose-genre-dropdown'>
             <option>Choose Genre</option>
+            {
+                genres.map(genre=><option>{genre}</option>)
+            }
             </select>
             <input 
                 className="question-input"

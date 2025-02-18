@@ -10,7 +10,7 @@
 
 .add-content {
     background-color: #fff;
-    height: 460px;
+    min-height: 460px;
     width: 310px;
     margin-left: 30px;
     margin-top: 95px;
@@ -380,4 +380,5 @@
     margin: 0;
     margin-top: 8px;
     margin-bottom: 8px;
+    margin-left: 5px;
 }
