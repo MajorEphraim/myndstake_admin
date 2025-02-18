@@ -1,4 +1,7 @@
 import '../styles/ContentPage.css'
+import RadionButtonComp from '../components/RadioButtonComp'
+import AddContentComp from '../components/AddContentComp'
+
 function ContentPage(){
   const data = [
     {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
@@ -6,17 +9,13 @@ function ContentPage(){
     {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
     {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
     {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
+    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
   ]
+
     return(
       <div className="content-container">
-        <div className="add-content">
-            <h4>Add Content</h4>
-            <div>
-              <h4></h4>
-            </div>
-            <textarea></textarea>
-        </div>
-
+        <AddContentComp/>
         <div className="all-content">
           <div className='content-upper-container'>
             <div className='total-q-container'>
@@ -50,6 +49,7 @@ function ContentPage(){
             <div className="actions-empty-heading">
             </div>
           </div>
+          <div className='scrolling-content'>
           {
             data.map(item=>(
               <div className="content-headings-row">
@@ -67,6 +67,7 @@ function ContentPage(){
                   {
                     item.options.filter((i,index)=>index < 2).map(option=>(
                         <div className='option-container'>
+                          <RadionButtonComp isSelected={option ==item.correct} isBig={false}/>
                           <h5 className='option-text'>{option}</h5>
                         </div>
                     )) 
@@ -77,6 +78,7 @@ function ContentPage(){
                   {
                     item.options.filter((i,index)=>index > 1).map(option=>(
                         <div className='option-container'>
+                          <RadionButtonComp isSelected={option ==item.correct} isBig={false}/>
                           <h5 className='option-text'>{option}</h5>
                         </div>
                     )) 
@@ -96,6 +98,7 @@ function ContentPage(){
 
             ))
           }
+           </div>
           </div>
         </div>
       </div>
