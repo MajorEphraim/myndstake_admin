@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import '../styles/ContentPage.css'
 import RadionButtonComp from '../components/RadioButtonComp'
 import AddContentComp from '../components/AddContentComp'
 import TableHeaderComp from '../components/TableHeaderComp';
 import TableRowComp from '../components/TableRowComp';
+import { ContentContext } from '../context/ContentContext';
 
 function ContentPage(){
 
@@ -13,24 +14,8 @@ function ContentPage(){
     "Science", "Chemistry", "Anime", "SA sopies" 
 
   ]
-  const content = [
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'FIFA world cup', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"What is the name of an avenger superhero who hold a hammer and is a viking ?", genre:'Hollywood Movies', options:["Hulk", "Iron man", "Thoir", "Vision"], correct:'Thoir'},
-    {id:'1', question:"Simphiwe Tshabala was a sole goal scorer when SA was against Mexico?", genre:'FIFA world cup', options:["Yes", "No"], correct:"Yes"},
-    {id:'1', question:"Total Avengers movies released by 2024?", genre:'Hollywood Movies', options:[8, 3, 6, 5], correct:5},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-    {id:'1', question:"Who is the starring of The Transporter movie?", genre:'Hollywood Movies', options:["Jason Statham", "Tom Cruise", "Steven Segal", "Jet Li"], correct:'Jason Statham'},
-    {id:'1', question:"How many goals did SA score during 2010 FIFA World Cup??", genre:'Soccer', options:[3, 2, 4, 1], correct:1},
-  ]
+
+  const { content } = useContext(ContentContext)
 
     const [search, setSearch] = useState('')
     const [genre, setGenre] = useState('All')

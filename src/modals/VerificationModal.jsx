@@ -5,6 +5,8 @@ import image3 from '../assets/image3.jpeg'
 import image4 from '../assets/image4.jpeg'
 import image2 from '../assets/image2.jpeg'
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function VerificationModal({setIsVisible, id}){
     const [viewed, setViewed] = useState(0)
@@ -26,7 +28,7 @@ function VerificationModal({setIsVisible, id}){
         <>
             <div className='modal-content'>
                 <div className='close-btn' onClick={()=>setIsVisible(false)}>
-                    <h1 className='close-btn-text'>X</h1>
+                <FontAwesomeIcon icon={faXmark} size='4x'  color="#fff"/>
                 </div>
                     <div>
                     <div className='images'>
