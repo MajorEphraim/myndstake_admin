@@ -1,6 +1,8 @@
 import React from "react";
 import '../styles/HomeHeaderComp.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function HomeHeaderComp(){
     return(
@@ -26,7 +28,7 @@ function HomeHeaderComp(){
           <div className="account-container">
             <h1 className="admin-name">Chris</h1>
                 <div className="logout-icon">
-
+                    <FontAwesomeIcon icon={faRightFromBracket} color="#FE3E12"/>
                 </div>
           </div>
 

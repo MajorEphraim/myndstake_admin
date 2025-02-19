@@ -44,3 +44,10 @@
     font-weight: bold;
     color: #fff;
 }
+
+.scrolling-details{
+    max-height: 78vh; 
+    overflow-y: auto;  
+    display: block;  
+    margin-top: 10px;  
+}

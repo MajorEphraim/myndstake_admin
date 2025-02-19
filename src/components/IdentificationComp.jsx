@@ -1,6 +1,10 @@
 import '../styles/IdentificationComp.css'
 
-function IdentificationComp({id, email, date, pic, idPic}){
+function IdentificationComp({id, email, date, pic, idPic, setIsVisible, setOpenedDetails}){
+    const handleOpen =()=>{
+        setOpenedDetails(id)
+        setIsVisible(true)
+    }
     return (
         <div className="identification-container">
             <div className="email-date-container">
@@ -15,7 +19,7 @@ function IdentificationComp({id, email, date, pic, idPic}){
                 <img className='id-pic' src={idPic}/>
             </div>
             <div className='btn-container'>
-                <div className='open-btn'>
+                <div className='open-btn' onClick={handleOpen}>
                     <h5 className='btn-text'>Open</h5>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import IdentificationComp from "./IdentificationComp"
 import '../styles/GroupedIdentificationsComp.css'
 
-function GroupedIdentificationComp({arr}){
+function GroupedIdentificationComp({arr, setIsVisible,setOpenedDetails}){
     return(
         <div className="grouped-identifications">
             {
@@ -11,6 +11,8 @@ function GroupedIdentificationComp({arr}){
                                 idPic = {item.idPic}
                                 email = {item.email}
                                 date = {item.date}
+                                setIsVisible={setIsVisible}
+                                setOpenedDetails={setOpenedDetails}
                             />)
             }
             

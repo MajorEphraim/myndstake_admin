@@ -1,12 +1,10 @@
 import { useState } from "react"
 import RadionButtonComp from "./RadioButtonComp"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function AddContentComp({genres}) {
-    const [options, setOptions] = useState([
-        {name:'Transformers', isSelected:false},
-        {name:'Avengers', isSelected:false},
-        {name:'Lion King', isSelected:false},
-    ])
+    const [options, setOptions] = useState([])
 
     const [option, setOption] = useState('')
 
@@ -47,10 +45,15 @@ function AddContentComp({genres}) {
                 genres.map(genre=><option>{genre}</option>)
             }
             </select>
-            <input 
-                className="question-input"
-                placeholder="Type a question..." 
-                />
+            <textarea
+            rows="4" 
+            cols="50" 
+            className="question-input"
+            placeholder="Type a question..." 
+            >
+            </textarea> 
+                
+    
             <div>
             <h4 className="options-text">Options</h4>
             <div className="all-options-container">
@@ -62,7 +65,7 @@ function AddContentComp({genres}) {
                                 <h5 className="added-option">{item.name}</h5>
                             </div>
                             <div className="remove-option-btn" onClick={()=>removeOption(item.name)}>
-                                
+                                <FontAwesomeIcon icon={faXmark} color="#fff"/>
                             </div>
                         </div>
 
@@ -78,7 +81,7 @@ function AddContentComp({genres}) {
                                        value={option}
                                 />          
                     <div className="add-option-btn" onClick={addOption}>
-                            
+                        <FontAwesomeIcon icon={faPlus}  color="#fff"/>
                     </div>
                 </div>
                     )

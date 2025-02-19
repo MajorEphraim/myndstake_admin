@@ -1,17 +1,16 @@
-function RadionButtonComp({isSelected, isBig}) {
-        return (
-            <div style={{width: isBig ?'20px':'11px', height: isBig ?'20px':'11px', 
-                         border:'3px #470477 solid', borderRadius:'100%',
-                         display:'flex', alignItems:'center', justifyContent:'center'
-                         }}>
-                            {
-                                isSelected ? (
-                                    <div style={{width: isBig ?'15px':'8px', height: isBig ?'15px':'8px', 
-                                          backgroundColor:'#470477', borderRadius:'100%',
-                                        }}/>
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleDot, faCircle } from '@fortawesome/free-regular-svg-icons';
 
-                                ):(null)
-                            }
+function RadionButtonComp({isSelected, isBig}) {
+        const btnSize = isBig ? '2x':'1x'
+        return (
+            <div>
+                {isSelected ? (
+                    <FontAwesomeIcon icon={faCircleDot} color='#470477' size={btnSize}/>
+                  ) : (
+                    <FontAwesomeIcon icon={faCircle} color='#470477' size={btnSize}/>
+                  )}
+                
              </div>
         )
 }

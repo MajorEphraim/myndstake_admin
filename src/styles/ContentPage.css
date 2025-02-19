@@ -55,22 +55,23 @@
 }
 
 .question-input {
-    background-color: #FC9C87;
+    background-color: #FBC8BD;
     width: 265px;
     height: 85px;
     border-radius: 10px;
     border: none;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 15px;
+    font-size: 18px;
     margin-top: 10px;
+    text-align: center;
+    padding: 8px;
+    overflow-y: hidden;
 }
 
 .option-content-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .radio-option-choice {
@@ -89,6 +90,9 @@
     width: 25px;
     border-radius: 100px;
     background-color: #FE3E12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .option-input-container {
@@ -112,6 +116,9 @@
     width: 25px;
     border-radius: 100px;
     background-color: #470477;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .submit-option-btn {
@@ -133,7 +140,6 @@
     margin-right: 30px;
     margin-top: 80px;
     border-radius: 10px;
-    overflow: auto;
     padding-bottom: 3px;
 }
 
@@ -221,7 +227,9 @@
 }
 
 .scrolling-content{
-   
+  max-height: 500px; 
+  overflow-y: auto;  
+  display: block;    
 }
 
 .headings-row {
@@ -239,8 +247,10 @@
 .content-headings-row {
     padding-left: 5px;
     padding-right: 5px;
-    height: 85px;
+    min-height: 85px;
     border-bottom: #000 1px solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .question-heading {
@@ -359,6 +369,9 @@
     width: 40px;
     height: 40px;
     border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .option-container {
