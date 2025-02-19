@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 import AuthHeaderComp from '../components/AuthHeaderComp'
 import HomeHeaderComp from '../components/HomeHeaderComp'
 
@@ -10,10 +11,11 @@ import PaymentPage from '../pages/PaymentPage'
 import VerificationPage from '../pages/VerificationPage'
 
 function RouterComp(){
-    const a = false
+    const { userId } = useContext(AuthContext)
+
     //check if authenticated to switch between headers
     function renderHeader () {
-        if(a == true)
+        if(userId == null)
             return <AuthHeaderComp/>
         else
             return <HomeHeaderComp/>
@@ -24,10 +26,10 @@ function RouterComp(){
             <div>
             {renderHeader()}
               <Routes>
-                <Route path="/" element={ a ==true ? <AuthPage/>:<VerificationPage/>} />
-                <Route path="/payments" element={<PaymentPage/>} />
-                <Route path="/content" element={<ContentPage/>} />
-                <Route path="/verifications" element={<VerificationPage/>} />
+                <Route path="/" element={userId == null ? <AuthPage/>:<VerificationPage/>} />
+                <Route path="/payments" element={userId == null ? <AuthPage/>:<PaymentPage/>} />
+                <Route path="/content" element={userId == null ? <AuthPage/>:<ContentPage/>} />
+                <Route path="/verifications" element={userId == null ? <AuthPage/>:<VerificationPage/>} />
               </Routes>
 
             </div>
