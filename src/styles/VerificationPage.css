@@ -3,8 +3,9 @@
    height: 100vh;
    display: flex;
    flex-direction: column;
+   position: fixed;
    margin-top: 65px;
-   
+   top: 0;
 }
 
 .verification-words-container {

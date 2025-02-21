@@ -4,6 +4,7 @@ import { PaymentsProvider } from './context/PaymentsContext'
 import { ContentProvider } from './context/ContentContext'
 import { AuthProvider } from './context/AuthContext'
 import { AccountProvider } from './context/AccountContext'
+import { GenresProvider } from './context/GenresContext'
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <DocumentationsProvider>
           <PaymentsProvider>
             <ContentProvider>
-              <RouterComp/>
+              <GenresProvider>
+                <RouterComp/>
+              </GenresProvider>
             </ContentProvider>
           </PaymentsProvider>
         </DocumentationsProvider>

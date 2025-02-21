@@ -3,13 +3,19 @@ import RadionButtonComp from "./RadioButtonComp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenresContext } from "../context/GenresContext";
+import { ContentContext } from "../context/ContentContext";
 
-function AddContentComp() {
-    const [options, setOptions] = useState([])
-
+function UpdateContentComp({id}) {
+    
     const [option, setOption] = useState('')
     const { genres } = useContext(GenresContext)
-
+    const { content } = useContext(ContentContext)
+    
+    const openedContent = content.filter(item=>item.id === id)[0]
+    const [question, setQuestion] = useState(openedContent.question)
+    const [genre, setGenre] = useState(openedContent.genre)
+    const [options, setOptions] = useState(openedContent.options.map(name=>({name,isSelected:name === openedContent.correct})))
+    
     //check if option is empty or it exists before adding it
     const addOption =()=>{
         if(!options.map(item=>item.name).includes(option) && option.length>0)
@@ -40,8 +46,12 @@ function AddContentComp() {
     return (
      <div className="add-content">
         <div className="add-content-actions">
-            <h4 className='add-content-text'>Add Content</h4>
-            <select className='choose-genre-dropdown'>
+            <h4 className='add-content-text'>Update Content</h4>
+            <select 
+            className='choose-genre-dropdown' 
+            onChange={e=>setGenre(e.target.value)}
+            value={genre}
+            >
             <option>Choose Genre</option>
             {
                 genres.map(genre=><option>{genre}</option>)
@@ -52,6 +62,8 @@ function AddContentComp() {
             cols="50" 
             className="question-input"
             placeholder="Type a question..." 
+            onChange={e=>setQuestion(e.target.value)}
+            value={question}
             >
             </textarea> 
                 
@@ -98,4 +110,4 @@ function AddContentComp() {
  )
 }
 
-export default AddContentComp
+export default UpdateContentComp

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AccountContext } from "../context/AccountContext";
 import '../styles/HomeHeaderComp.css'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,17 +11,17 @@ function HomeHeaderComp(){
           <div className="left-container">
             <div className="verification-link">
                 <a href="/verifications">
-                    <h1 className="link-text">User Verification</h1>
+                    <h5 className="link-text">User Verification</h5>
                 </a>
             </div>
             <div className="link-container">
                 <a href="/payments">
-                    <h1 className="link-text">Payments</h1>
+                    <h5 className="link-text">Payments</h5>
                 </a>
             </div>
             <div className="link-container">
                 <a href="/content">
-                    <h1 className="link-text">App Content</h1>
+                    <h5 className="link-text">App Content</h5>
                 </a>
             </div>
           </div>

@@ -8,6 +8,9 @@ function BankTransferComp({data}){
               <h6 className="heading-text">#</h6>
             </div>
             <div className="heading">
+              <h6 className="heading-text">Acc Holder Name</h6>
+            </div>
+            <div className="heading">
               <h6 className="heading-text">Acc Number</h6>
             </div>
             <div className="heading">
@@ -29,6 +32,9 @@ function BankTransferComp({data}){
             <div className="payment-row">
                 <div className="info-container">
                   <h6 className="payment-info">{index+1}</h6>
+                </div>
+                <div className="info-container">
+                  <h6 className="payment-info">{item.holderName}</h6>
                 </div>
                 <div className="info-container">
                   <h6 className="payment-info">{item.accNo}</h6>

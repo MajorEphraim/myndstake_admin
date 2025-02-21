@@ -25,18 +25,28 @@ function PaymentPage(){
     {id:'5', cellNo:'0123456789',  amount:500, type:'cash send'},
   ]
 
+  const bankArr = payments && payments.filter(item=>item.type === 'transfer')
+  const ewalletArr = payments && payments.filter(item=>item.type === 'e-wallet')
+  const cashSendArr = payments && payments.filter(item=>item.type === 'cash send')
+
   const renderPaymentType = ()=>{
     if(colNo === 1)
-     return <BankTransferComp data={payments && payments.filter(item=>item.type === 'transfer')}/>
+     return <BankTransferComp data={bankArr}/>
      else if(colNo === 2)
-    return <EwalletComp data={payments && payments.filter(item=>item.type === 'e-wallet')}/>
+    return <EwalletComp data={ewalletArr}/>
     else
-    return <CashSendComp data={payments && payments.filter(item=>item.type === 'cash send')}/>
+    return <CashSendComp data={cashSendArr}/>
   }
 
     return(
       <div className="payments-container">
-        <PaymentsTypesComp colNo={colNo} setColNo={setColNo}/>
+        <PaymentsTypesComp 
+          totalBank={bankArr.length} 
+          totalEwallet={ewalletArr.length}
+          totalCashSend={cashSendArr.length}  
+          data={data} colNo={colNo} 
+          setColNo={setColNo}
+        />
        {renderPaymentType()}
       </div>
     )

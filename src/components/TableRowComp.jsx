@@ -2,7 +2,12 @@ import RadionButtonComp from "./RadioButtonComp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function TableRowComp({item}) {
+function TableRowComp({item, setIsVisible, setId}) {
+
+    const handleClick = ()=>{
+      setId(item.id)
+      setIsVisible(true);
+    }
     return(
         <div className="content-headings-row">
         <div className="question-container">
@@ -38,7 +43,7 @@ function TableRowComp({item}) {
         </div>  
         </div>
         <div className="content-actions">
-            <div className='content-update-btn'>
+            <div className='content-update-btn' onClick={handleClick}>
               <FontAwesomeIcon icon={faFilePen}  color='#fff'/>
             </div>
 
