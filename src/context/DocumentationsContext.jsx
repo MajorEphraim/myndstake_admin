@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import {useEffect, createContext, useState } from "react";
+import { db, onSnapshot, collection, where, query} from '../configs/configs'
+import { getDocDetails } from "../services/firestoreServices";
 
 import pic from '../assets/image.jpeg'
 import pic2 from '../assets/download.jpeg'
@@ -24,9 +26,31 @@ export const DocumentationsProvider = ({children})=>{
               
     ])
 
-    const handleSetDocumentations = ()=>{
+    useEffect(()=>{
 
-    }
+        const q = query(collection(db, "documentations"), where("status", "==", "pending"));
+        const unsubscribe = onSnapshot(q, async(querySnapshot) => {
+        const promises = [];
+            querySnapshot.forEach((doc) => {
+                const data = doc.data()
+                promises.push(async()=>{
+                    const details = await getDocDetails(data.userId)
+                    return {...data, id:doc.id, email:details.email}
+                });
+            });
+
+            const response = await Promise.all(promises)
+
+            console.log("DOCUMEENE:: ",response)
+            //setDocumentations(response)
+        });
+
+        return ()=>{
+            unsubscribe()
+        }
+
+    },[])
+
 
     return(
         <DocumentationsContext.Provider value={{documentations}}>

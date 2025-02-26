@@ -32,10 +32,11 @@
     justify-content: flex-start;
     align-items: center;
 }
-
+ 
 .heading-text {
     color: #fff;
     font-weight: 500;
+    font-size: 11px;
 }
 
 .payment-row {

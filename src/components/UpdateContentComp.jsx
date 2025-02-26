@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenresContext } from "../context/GenresContext";
 import { ContentContext } from "../context/ContentContext";
+import { updateContent } from '../services/firestoreServices'
 
-function UpdateContentComp({id}) {
-    
+function UpdateContentComp({id, setIsVisible}) {
     const [option, setOption] = useState('')
     const { genres } = useContext(GenresContext)
     const { content } = useContext(ContentContext)
     
     const openedContent = content.filter(item=>item.id === id)[0]
-    const [question, setQuestion] = useState(openedContent.question)
+    const [question, setQuestion] = useState(openedContent.question ?openedContent.question:{})
     const [genre, setGenre] = useState(openedContent.genre)
     const [options, setOptions] = useState(openedContent.options.map(name=>({name,isSelected:name === openedContent.correct})))
     
@@ -42,6 +42,44 @@ function UpdateContentComp({id}) {
         setOptions(arr)
 
     }
+
+    const handleUpdate = async()=>{
+
+        const isSelectedArr = options.filter(option=> option.isSelected)
+        if(genre === null || genre === "Choose Genre"){
+            alert("Choose genre")
+            return
+        }
+
+        if(question === ""){
+            alert("Enter a question")
+            return
+        }
+
+        if(options.length < 2){
+            alert("Enter atleast 2 options")
+            return
+        }
+
+        if(isSelectedArr.length == 0){
+            alert("Select the correct option")
+            return
+        }
+
+        try {
+            await updateContent({question, 
+                                 genre, 
+                                 options: options.map(option=>option.name),
+                                 correct:isSelectedArr[0].name},id)
+                                 
+            setIsVisible(false)
+
+
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
 
     return (
      <div className="add-content">
@@ -90,10 +128,10 @@ function UpdateContentComp({id}) {
                     options.length>3?null:(
                 <div className="option-input-container">
                       <input className="option-input" 
-                                       placeholder="Type the option ..."
-                                       onChange={e=>setOption(e.target.value)}
-                                       value={option}
-                                />          
+                             placeholder="Type the option ..."
+                             onChange={e=>setOption(e.target.value)}
+                             value={option}
+                    />          
                     <div className="add-option-btn" onClick={addOption}>
                         <FontAwesomeIcon icon={faPlus}  color="#fff"/>
                     </div>
@@ -103,8 +141,8 @@ function UpdateContentComp({id}) {
             </div>
         </div>
        
-        <div className='submit-option-btn'>
-            <h5 className='btn-text'>Submit</h5>
+        <div className='submit-option-btn' onClick={handleUpdate}>
+            <h5 className='btn-text'>Update</h5>
         </div>
      </div>
  )

@@ -1,15 +1,30 @@
-import { createContext, useState } from "react";
+import {useEffect, createContext, useState } from "react";
+import { db, onSnapshot, collection, where, query} from '../configs/configs'
 
 // context for genres
 export const GenresContext = createContext()
 
 //provider for genres context
 export const GenresProvider = ({children})=>{
-    const [genres, setGenres] = useState([
-            "Hollywood Movies", "Soccer", "Rugby", "Amapiano music", 
-            "WWE wrestling", "Fruits and Veges", "Politics",
-            "Science", "Chemistry", "Anime", "SA sopies" 
-    ])
+    const [genres, setGenres] = useState(["WWE Wrestling", "Soccer", "Movies"])
+
+    useEffect(()=>{
+
+        const q = query(collection(db, "genres"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const array = [];
+            querySnapshot.forEach(async(doc) => {
+                array.push(doc.data().name);
+            });
+
+            //setGenres(array)
+        });
+
+        return ()=>{
+            unsubscribe()
+        }
+
+    },[])
 
     return(
         <GenresContext.Provider value={{genres, setGenres}}>

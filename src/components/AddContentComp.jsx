@@ -3,11 +3,14 @@ import RadionButtonComp from "./RadioButtonComp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenresContext } from "../context/GenresContext";
+import { addNewContent } from '../services/firestoreServices'
 
 function AddContentComp() {
     const [options, setOptions] = useState([])
 
     const [option, setOption] = useState('')
+    const [question, setQuestion] = useState('')
+    const [genre, setGenre] = useState(null)
     const { genres } = useContext(GenresContext)
 
     //check if option is empty or it exists before adding it
@@ -37,11 +40,45 @@ function AddContentComp() {
 
     }
 
+    const handleSubmit = async()=>{
+
+        const isSelectedArr = options.filter(option=> option.isSelected)
+        if(genre === null || genre === "Choose Genre"){
+            alert("Choose genre")
+            return
+        }
+
+        if(question === ""){
+            alert("Enter a question")
+            return
+        }
+
+        if(options.length < 2){
+            alert("Enter atleast 2 options")
+            return
+        }
+
+        if(isSelectedArr.length == 0){
+            alert("Select the correct option")
+            return
+        }
+
+        try {
+        
+            await addNewContent({question, 
+                                 genre, 
+                                 options: options.map(option=>option.name),
+                                 correct:isSelectedArr[0].name})
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     return (
      <div className="add-content">
         <div className="add-content-actions">
             <h4 className='add-content-text'>Add Content</h4>
-            <select className='choose-genre-dropdown'>
+            <select className='choose-genre-dropdown' onChange={e=>setGenre(e.target.value)}>
             <option>Choose Genre</option>
             {
                 genres.map(genre=><option>{genre}</option>)
@@ -52,6 +89,7 @@ function AddContentComp() {
             cols="50" 
             className="question-input"
             placeholder="Type a question..." 
+            onChange={e=>setQuestion(e.target.value)}
             >
             </textarea> 
                 
@@ -91,7 +129,7 @@ function AddContentComp() {
             </div>
         </div>
        
-        <div className='submit-option-btn'>
+        <div className='submit-option-btn' onClick={handleSubmit}>
             <h5 className='btn-text'>Submit</h5>
         </div>
      </div>

@@ -56,3 +56,18 @@
     align-items: center;
     justify-content: flex-end;
 }
+
+@media (max-width:430px){
+        
+    .heading, .info-container {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .empty-heading, .num-heading {
+        flex: 3;
+    }
+}

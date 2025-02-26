@@ -10,7 +10,7 @@ function UpdateContentModal({setIsVisible, id}){
                 <div className='close-btn' onClick={()=>setIsVisible(false)}>
                     <FontAwesomeIcon icon={faXmark} size='4x'  color="#fff"/>
                 </div>
-                <UpdateContentComp id={id}/>
+                <UpdateContentComp id={id} setIsVisible={setIsVisible}/>
             </div>
 
             <div className="verify-container"/>

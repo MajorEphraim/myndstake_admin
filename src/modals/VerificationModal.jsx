@@ -15,18 +15,20 @@ function VerificationModal({setIsVisible, id}){
                 <div className='close-btn' onClick={()=>setIsVisible(false)}>
                 <FontAwesomeIcon icon={faXmark} size='4x'  color="#fff"/>
                 </div>
-                    <div>
-                    <div className='images'>
-                        <div className='pic-container' style={{border:viewed === 0 ?'#fff solid 4px' : null}}   onClick={()=>setViewed(0)}>
-                            <img src={selfie} alt='selfie' height='100%' width='100%'/>
-                        </div>
+                    <div className='actual-content'>
+                    <div className='all-images'>
+                        <div className='images'>
+                            <div className='pic-container' style={{border:viewed === 0 ?'#fff solid 4px' : null}}   onClick={()=>setViewed(0)}>
+                                <img src={selfie} alt='selfie' height='100%' width='100%'/>
+                            </div>
 
-                        <div className='pic-container' style={{border:viewed === 1 ?'#fff solid 4px' : null}} onClick={()=>setViewed(1)}>
-                            <img src={idPic} alt='id pic' height='100%' width='100%'/>
+                            <div className='pic-container' style={{border:viewed === 1 ?'#fff solid 4px' : null}} onClick={()=>setViewed(1)}>
+                                <img src={idPic} alt='id pic' height='100%' width='100%'/>
+                            </div>
                         </div>
-                    </div>
-                    <div className='viewed-image-container'>
-                        <img src={ viewed === 0 ? selfie : idPic} className='viewed-image' />
+                        <div className='viewed-image-container'>
+                            <img src={ viewed === 0 ? selfie : idPic} className='viewed-image' />
+                        </div>
                     </div>
                     <div className='buttons'>
                         <div className='verify-btn'>

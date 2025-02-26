@@ -1,5 +1,5 @@
 import PaymentButton from "./PaymentButton"
-
+  
 function BankTransferComp({data}){
     return (
         <div className="payments-table">
@@ -26,7 +26,7 @@ function BankTransferComp({data}){
               <h6 className="heading-text"></h6>
             </div>
         </div>
-
+ 
         {
           data.map((item, index)=>(
             <div className="payment-row">

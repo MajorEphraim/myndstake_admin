@@ -12,10 +12,10 @@ function ContentPage(){
   const { content } = useContext(ContentContext)
   const { genres } = useContext(GenresContext)
 
-  const [id, setId] = useState(null)
+  const [id, setId] = useState("1")
   const [search, setSearch] = useState('')
   const [genre, setGenre] = useState('All')
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const displayedContent = content
                             .filter(item=>item.question.
                                   toLowerCase()
