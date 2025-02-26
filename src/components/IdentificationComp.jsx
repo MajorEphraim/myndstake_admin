@@ -1,6 +1,6 @@
 import '../styles/IdentificationComp.css'
 
-function IdentificationComp({id, email, date, pic, idPic, setIsVisible, setOpenedDetails}){
+function IdentificationComp({id, email, sentDate, pic, idPic, setIsVisible, setOpenedDetails}){
     const handleOpen =()=>{
         setOpenedDetails(id)
         setIsVisible(true)
@@ -11,7 +11,7 @@ function IdentificationComp({id, email, date, pic, idPic, setIsVisible, setOpene
                 <h6 className="email">{email}</h6>
                 <div className='date-container'>
                     <h6 className="date-text">Date sent:</h6>
-                    <h6 className="date">{date}</h6>
+                    <h6 className="date">{sentDate}</h6>
                 </div>
             </div>
             <div className='pics'>

@@ -6,7 +6,7 @@ export const GenresContext = createContext()
 
 //provider for genres context
 export const GenresProvider = ({children})=>{
-    const [genres, setGenres] = useState(["WWE Wrestling", "Soccer", "Movies"])
+    const [genres, setGenres] = useState([])
 
     useEffect(()=>{
 
@@ -17,7 +17,7 @@ export const GenresProvider = ({children})=>{
                 array.push(doc.data().name);
             });
 
-            //setGenres(array)
+            setGenres(array)
         });
 
         return ()=>{

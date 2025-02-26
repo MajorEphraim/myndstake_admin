@@ -1,18 +1,18 @@
 import { db, doc, getDoc, collection, 
-        addDoc,updateDoc, } from "../configs/configs";
+        addDoc,updateDoc, deleteDoc } from "../configs/configs";
 
 // get documentations user details
 const getDocDetails = async(id)=>{
-    const docRef = doc(db, "userDetails", id);
+    
+    const docRef = doc(db, "user details", id);
     try {
         const docSnap = await getDoc(docRef);
         let data;
         if (docSnap.exists()) {
-           data = docSnap.data()
+            data = docSnap.data()
         } else {
-          console.log("No such document!");
+            console.log("No such document!");
         }
-        
         return data
     } catch (error) {
         throw new Error(error);
@@ -59,6 +59,16 @@ const updateContent = async(content,id)=>{
     }
 }
 
+// Removes content based on the id of the doc
+const removeContent = async(id)=>{
+    try {
+        await deleteDoc(doc(db, "content", id));
+    } catch (error) {
+        throw new Error(error);
+        
+    }
+}
+
 // Update payment details
 const makePayment = async(id)=>{
     try {
@@ -70,7 +80,7 @@ const makePayment = async(id)=>{
     }
 }
 
-// Verify the identification sent
+// Verify the identification/documentation sent
 const verifyDocumentation = async(id, userId)=>{
     try {
         await updateDoc(doc(db, "user details", userId), {status:'Verified'});
@@ -80,6 +90,18 @@ const verifyDocumentation = async(id, userId)=>{
     }
 }
 
+// Removes identification/documentation based on the id of the doc
+const rejectDocumentation = async(id, userId)=>{
+    try {
+        await deleteDoc(doc(db, "documentations", id));
+        await updateDoc(doc(db, "user details", userId), {status:'Not verified'});
+    } catch (error) {
+        throw new Error(error);
+        
+    }
+}
+
 // export all methods in an object
 export { getDocDetails, getAdminDetails, addNewContent,
-        updateContent, makePayment, verifyDocumentation}
+        updateContent, makePayment, verifyDocumentation, 
+        removeContent, rejectDocumentation}

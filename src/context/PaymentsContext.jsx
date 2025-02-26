@@ -10,7 +10,7 @@ export const PaymentsProvider = ({children})=>{
 
     useEffect(()=>{
 
-        const q = query(collection(db, "payments"), where("status", "==", "Outstanding"));
+        const q = query(collection(db, "payments"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const array = [];
             querySnapshot.forEach(async(doc) => {

@@ -1,5 +1,6 @@
 import PaymentButton from "./PaymentButton"
 import '../styles/EwalletComp.css'
+import { makePayment } from '../services/firestoreServices'
 
 function CashSendComp({data}){
     return (
@@ -30,9 +31,18 @@ function CashSendComp({data}){
                 <div className="info-container">
                   <h6 className="payment-info">{item.amount}</h6>
                 </div>
-                <div className="ewallet-btn-container">
-                  <PaymentButton name='Done' color='#470477'/>
-                </div>
+                {
+                  item.status === "Outstanding" ? (
+                    <div className="payment-btn-container" onClick={()=>makePayment(item.id)}>
+                      <PaymentButton name='Done' color='#470477'/>
+                    </div>
+
+                  ):(
+                      <div className="payment-btn-container">
+                      <PaymentButton name='Paid' color='#FE3E12'/>
+                    </div>
+                  )
+                }
             </div>
           ))
         }

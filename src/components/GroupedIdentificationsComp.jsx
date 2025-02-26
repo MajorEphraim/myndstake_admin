@@ -10,7 +10,7 @@ function GroupedIdentificationComp({arr, setIsVisible,setOpenedDetails}){
                                 pic = {item.pic}
                                 idPic = {item.idPic}
                                 email = {item.email}
-                                date = {item.date}
+                                sentDate = {item.sentDate}
                                 setIsVisible={setIsVisible}
                                 setOpenedDetails={setOpenedDetails}
                             />)

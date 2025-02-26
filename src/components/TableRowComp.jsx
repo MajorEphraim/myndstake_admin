@@ -1,6 +1,7 @@
 import RadionButtonComp from "./RadioButtonComp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { removeContent } from '../services/firestoreServices'
 
 function TableRowComp({item, setIsVisible, setId}) {
 
@@ -47,7 +48,7 @@ function TableRowComp({item, setIsVisible, setId}) {
               <FontAwesomeIcon icon={faFilePen}  color='#fff'/>
             </div>
 
-            <div className='content-delete-btn'>
+            <div className='content-delete-btn' onClick={()=>removeContent(item.id)}>
               <FontAwesomeIcon icon={faTrash} color='#fff'/>
             </div>
         </div>

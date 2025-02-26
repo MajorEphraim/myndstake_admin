@@ -28,9 +28,9 @@ function PaymentPage(){
     return(
       <div className="payments-container">
         <PaymentsTypesComp 
-          totalBank={bankArr.length} 
-          totalEwallet={ewalletArr.length}
-          totalCashSend={cashSendArr.length}  
+          totalBank={bankArr.filter(item=>item.status === "Outstanding").length} 
+          totalEwallet={ewalletArr.filter(item=>item.status === "Outstanding").length}
+          totalCashSend={cashSendArr.filter(item=>item.status === "Outstanding").length}  
           data={payments} colNo={colNo} 
           setColNo={setColNo}
         />

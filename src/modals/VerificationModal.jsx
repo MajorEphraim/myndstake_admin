@@ -3,12 +3,31 @@ import { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DocumentationsContext } from '../context/DocumentationsContext'
+import { verifyDocumentation, rejectDocumentation } from '../services/firestoreServices'
 
 function VerificationModal({setIsVisible, id}){
     const [viewed, setViewed] = useState(0)
     const { documentations } = useContext(DocumentationsContext)
-    const selfie = documentations.filter(item=>item.id === id)[0].pic
-    const idPic = documentations.filter(item=>item.id === id)[0].idPic
+    const documentation = documentations.filter(item=>item.id === id)[0]
+    const selfie = documentation.pic
+    const idPic = documentation.idPic
+
+    const handleVerify = async()=>{
+        try {
+            await verifyDocumentation(id, documentation.userId)
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    const handleReject = async()=>{
+        try {
+            await rejectDocumentation(id, documentation.userId)
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+    
     return(
         <>
             <div className='modal-content'>
@@ -30,12 +49,12 @@ function VerificationModal({setIsVisible, id}){
                             <img src={ viewed === 0 ? selfie : idPic} className='viewed-image' />
                         </div>
                     </div>
-                    <div className='buttons'>
+                    <div className='buttons' onClick={handleVerify}>
                         <div className='verify-btn'>
                             <h6 className='action-btn-text'>Verify</h6>
                         </div>
 
-                        <div className='reject-btn'>
+                        <div className='reject-btn' onClick={handleReject}>
                             <h6 className='action-btn-text'>Reject</h6>
                         </div>
                     </div>

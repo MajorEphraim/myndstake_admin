@@ -5,7 +5,7 @@ import {initializeAuth, getAuth, onAuthStateChanged,
     createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, deleteUser } from "firebase/auth";
 
 import { doc, getDoc , setDoc, getFirestore, collection,query, where, onSnapshot,
-        getDocs, addDoc, updateDoc, increment } from 'firebase/firestore';
+        getDocs, addDoc, updateDoc, increment, deleteDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL,
         deleteObject } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
@@ -32,6 +32,6 @@ const auth = getAuth(app)
 export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   db, signOut, doc, getDoc , setDoc, ref, uploadBytesResumable, 
   getDownloadURL, deleteObject, deleteUser, onAuthStateChanged,
-  collection,query, where, onSnapshot, getDocs, addDoc, updateDoc, 
-  increment
+  collection,query, where, onSnapshot, getDocs, addDoc, updateDoc,
+  deleteDoc, increment
 }
