@@ -5,10 +5,13 @@ export const AccountContext = createContext()
 
 //provider for account context
 export const AccountProvider = ({children})=>{
-    const [username, setUsername] = useState('Christopher')
+    const [details, setDetails] = useState({
+        username:'',
+        email:''
+    })
 
     return(
-        <AccountContext.Provider value={{username, setUsername}}>
+        <AccountContext.Provider value={{details, setDetails}}>
             {children}
         </AccountContext.Provider>
     )

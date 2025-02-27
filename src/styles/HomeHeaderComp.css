@@ -74,9 +74,8 @@
     .left-container {
         display: none;
     }
-
     
-.menubar-container {
-    display: block;
-}
+    .menubar-container {
+        display: block;
+    }
 }

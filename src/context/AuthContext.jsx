@@ -5,7 +5,7 @@ export const AuthContext = createContext()
 
 //provider for content context
 export const AuthProvider = ({children})=>{
-    const [userId, setUserId] = useState("null")
+    const [userId, setUserId] = useState(null)
 
     return(
         <AuthContext.Provider value={{userId, setUserId}}>

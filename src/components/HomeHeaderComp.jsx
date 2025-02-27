@@ -1,14 +1,28 @@
 import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { AccountContext } from "../context/AccountContext";
 import { DrawerContext } from "../context/DrawerContext";
 import '../styles/HomeHeaderComp.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket, faBars } from '@fortawesome/free-solid-svg-icons';
+import { signOutUser } from "../services/authServices";
 
 
 function HomeHeaderComp(){
-    const { username } = useContext(AccountContext)
+    const { details, setDetails } = useContext(AccountContext)
     const { openDrawer } = useContext(DrawerContext)
+    const { setUserId } = useContext(AuthContext)
+
+    const handleSignOut = async()=>{
+    
+        try {
+            await signOutUser()
+            setDetails({username:'', email:''})
+            setUserId(null)
+        } catch (error) {
+            alert(error.message)
+        }
+    }
     return(
         <div className="header">
           <div className="left-container">
@@ -32,8 +46,8 @@ function HomeHeaderComp(){
             <FontAwesomeIcon icon={faBars} color="#fff" size="2x"/>
           </div>
 
-          <div className="account-container">
-            <h1 className="admin-name">{username}</h1>
+          <div className="account-container" onClick={handleSignOut}>
+            <h1 className="admin-name">{details.username}</h1>
                 <div className="logout-icon">
                     <FontAwesomeIcon icon={faRightFromBracket} color="#FE3E12" size="1x"/>
                 </div>
