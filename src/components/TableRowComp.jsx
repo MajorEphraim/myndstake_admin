@@ -41,6 +41,17 @@ function TableRowComp({item, setIsVisible, setId}) {
                 </div>
             )) 
           }
+        </div>
+
+         <div className='all-options'>
+          {
+            item.options.map(option=>(
+                <div className='option-container'>
+                  <RadionButtonComp isSelected={option ==item.correct} isBig={false}/>
+                  <h5 className='option-text'>{option}</h5>
+                </div>
+            )) 
+          }
         </div>  
         </div>
         <div className="content-actions">

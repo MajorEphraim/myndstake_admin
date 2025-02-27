@@ -10,6 +10,8 @@ import ContentPage from '../pages/ContentPage'
 import PaymentPage from '../pages/PaymentPage'
 import VerificationPage from '../pages/VerificationPage'
 
+import DrawerComp from '../components/DrawerComp'
+
 function RouterComp(){
     const { userId } = useContext(AuthContext)
 
@@ -21,10 +23,17 @@ function RouterComp(){
             return <HomeHeaderComp/>
     }
 
+     //check if authenticated to switch between headers
+     function renderDrawer () {
+        return <DrawerComp/>
+    }
+
+
     return(
         <Router>
             <div>
             {renderHeader()}
+            {renderDrawer()}
               <Routes>
                 <Route path="/" element={userId == null ? <AuthPage/>:<VerificationPage/>} />
                 <Route path="/payments" element={userId == null ? <AuthPage/>:<PaymentPage/>} />

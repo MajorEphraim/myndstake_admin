@@ -6,7 +6,7 @@ function EwalletComp({data}){
     return (
         <div className="payments-table">
         <div className="headings-row">
-            <div className="heading">
+            <div className="heading-no">
               <h6 className="heading-text">#</h6>
             </div>
             <div className="heading">
@@ -23,7 +23,7 @@ function EwalletComp({data}){
         {
           data.map((item, index)=>(
             <div className="payment-row">
-                <div className="info-container">
+                <div className="info-container-no">
                   <h6 className="payment-info">{index+1}</h6>
                 </div>
                 <div className="info-container">

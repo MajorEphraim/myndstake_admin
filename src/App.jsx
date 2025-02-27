@@ -5,6 +5,7 @@ import { ContentProvider } from './context/ContentContext'
 import { AuthProvider } from './context/AuthContext'
 import { AccountProvider } from './context/AccountContext'
 import { GenresProvider } from './context/GenresContext'
+import { DrawerProvider } from './context/DrawerContext'
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
           <PaymentsProvider>
             <ContentProvider>
               <GenresProvider>
-                <RouterComp/>
+                <DrawerProvider>
+                  <RouterComp/>
+                </DrawerProvider>
               </GenresProvider>
             </ContentProvider>
           </PaymentsProvider>

@@ -44,7 +44,7 @@ function ContentPage(){
                     placeholder='Search by question or option....'
                     onChange={e=>setSearch(e.target.value)}
                     value={search}
-                    />
+                />
                 <div className='content-filter-container'>
                   <h5 className='content-filter-text'>filter by genre</h5>
                   <select className='filter-genre-dropdown' onChange={e=>setGenre(e.target.value)}>
@@ -56,6 +56,12 @@ function ContentPage(){
                 </div>
               </div>
             </div>
+              <input 
+                    className='mobile-content-search-bar' 
+                    placeholder='Search by question or option....'
+                    onChange={e=>setSearch(e.target.value)}
+                    value={search}
+                />
 
             <div className='all-content-table'>
             <TableHeaderComp/>

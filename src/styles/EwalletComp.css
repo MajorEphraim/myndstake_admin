@@ -16,6 +16,14 @@
     padding-right: 5px;
 }
 
+.heading-no, .info-container-no {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .heading, .info-container {
     flex: 1;
     display: flex;
@@ -39,6 +47,7 @@
     background-color:#F0EEEE;
     margin-bottom: 2px;
     height: 30px;
+    
 }
 
 .payment-info{
@@ -57,17 +66,22 @@
     justify-content: flex-end;
 }
 
-@media (max-width:430px){
+@media (max-width:767px){
+
+    .heading-no, .info-container-no {
+        flex: 1;
+    }
+    
         
     .heading, .info-container {
-        flex: 1;
+        flex: 2;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
     }
 
-    .empty-heading, .num-heading {
-        flex: 3;
+    .empty-heading,  .ewallet-btn-container {
+        flex: 1;
     }
 }
