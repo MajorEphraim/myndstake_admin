@@ -6,6 +6,7 @@
     width: 100vw;
     height: 100vh;
     margin-top: 9vh;
+    background-color: #fff;
 }
 
 .logo {
@@ -48,6 +49,7 @@
     font-weight: 640;
     font-size: 20px;
     text-align: center;
+    color: #000;
 }
 
 .form {
@@ -60,7 +62,7 @@
     background-color: #C9B6D5;
     margin-bottom: 10px;
     height: 25px;
-    width: 80vw;
+    width: 350px;
     border-radius: 6px;
     border: none;
     color: #fff;
@@ -89,7 +91,7 @@
 
     .cred-input {
         height: 35px;
-        width: 300px;
+        width: 80vw;
     }
 
     .login-btn {

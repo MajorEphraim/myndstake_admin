@@ -5,7 +5,7 @@ import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenresContext } from "../context/GenresContext";
 import { addNewContent } from '../services/firestoreServices'
 
-function MobileAddContentComp() {
+function MobileAddContentComp({setIsSending}) {
     const [options, setOptions] = useState([])
 
     const [option, setOption] = useState('')
@@ -64,13 +64,20 @@ function MobileAddContentComp() {
         }
 
         try {
-        
+            //setIsSending(true)
             await addNewContent({question, 
                                  genre, 
                                  options: options.map(option=>option.name),
                                  correct:isSelectedArr[0].name})
+
+            setQuestion('')
+            setOption('')
+            setOptions([])
+            setGenre(null)
+            //setIsSending(false)
         } catch (error) {
             alert(error.message)
+            //setIsSending(false)
         }
     }
 
@@ -90,6 +97,7 @@ function MobileAddContentComp() {
             className="question-input"
             placeholder="Type a question..." 
             onChange={e=>setQuestion(e.target.value)}
+            value={question}
             >
             </textarea> 
                 

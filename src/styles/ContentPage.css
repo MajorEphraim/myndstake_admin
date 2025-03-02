@@ -33,6 +33,7 @@
 
 .options-text {
     font-size: 15px;
+    color: #000;
 }
 
 .all-options-container {
@@ -66,6 +67,7 @@
     text-align: center;
     padding: 8px;
     overflow-y: hidden;
+    color: #000;
 }
 
 .option-content-container {
@@ -84,6 +86,7 @@
 .added-option {
     margin: 0;
     margin-left: 10px;
+    color: #000;
 }
 
 .remove-option-btn {
@@ -110,7 +113,10 @@
     border: none;
     border-radius: 5px;
     padding-left: 10px;
+    color: #000;
 }
+
+
 
 .add-option-btn {
     height: 25px;
@@ -395,6 +401,7 @@
     margin-top: 8px;
     margin-bottom: 8px;
     margin-left: 5px;
+    color: #000;
 }
 
 .mobile-content-search-bar {
@@ -410,7 +417,7 @@
 }
 
 .all-options {
-    display: none;
+  display: none;
 }
 
 .modal-add-content {
@@ -556,7 +563,8 @@
     .content-options {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items:flex-start;
+        justify-content: center;
         flex: 2;
     }
     

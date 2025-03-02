@@ -10,10 +10,8 @@ export const AccountProvider = ({children})=>{
         email:''
     })
 
-    const updateDetails = ()=>{
-        localStorage.removeItem('admin details')
-        localStorage.removeItem('userId')
-        setDetails({username:'',email:''})
+    const updateDetails = (data)=>{
+        setDetails(data)
     }
 
     return(

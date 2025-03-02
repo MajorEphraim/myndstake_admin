@@ -21,17 +21,20 @@
 .email {
     margin: 0;
     font-size: 15px;
+    color: #000;
 }
 
 .date {
     margin: 0;
     font-size: 15px;
+    color: #000;
 }
 
 .date-text {
     margin: 0;
     font-size: 13px;
     font-weight: 500;
+    color: #000;
 }
 
 .pics {

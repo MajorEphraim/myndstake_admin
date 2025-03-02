@@ -9,10 +9,12 @@ import UpdateContentModal from '../modals/UpdateContentModal';
 import AddContentModal from '../modals/AddContentModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import LoaderComp from '../components/LoaderComp';
+import LoaderModal from '../modals/LoaderModal';
 
 function ContentPage(){
 
-  const { content } = useContext(ContentContext)
+  const { content, isLoading } = useContext(ContentContext)
   const { genres } = useContext(GenresContext)
 
   const [id, setId] = useState("1")
@@ -20,6 +22,7 @@ function ContentPage(){
   const [genre, setGenre] = useState('All')
   const [isVisible, setIsVisible] = useState(false)
   const [isShown, setIsShown] = useState(false)
+  const [isSending, setIsSending] = useState(false)
   const displayedContent = content
                             .filter(item=>item.question.
                                   toLowerCase()
@@ -30,13 +33,16 @@ function ContentPage(){
     return(
       <>
         {
-          isVisible ? <UpdateContentModal setIsVisible={setIsVisible} id={id}/>:null
+          isVisible ? <UpdateContentModal setIsVisible={setIsVisible} setIsSending={setIsSending} id={id}/>:null
         }
         {
-          isShown ? <AddContentModal setIsVisible={setIsShown}/>:null
+          isShown ? <AddContentModal setIsVisible={setIsShown} setIsSending={setIsSending}/>:null
+        }
+        {
+          isSending ? <LoaderModal/> : null
         }
         <div className="content-container">
-          <AddContentComp/>
+          <AddContentComp setIsSending={setIsSending}/>
           <div className="all-content">
             <div className='content-upper-container'>
               <div className='total-q-container'>
@@ -75,13 +81,18 @@ function ContentPage(){
 
             <div className='all-content-table'>
             <TableHeaderComp/>
-            <div className='scrolling-content'>
             {
-              displayedContent.map(item=>(
-                <TableRowComp item={item} setIsVisible={setIsVisible} setId={setId}/>
-              ))
+              isLoading ? <LoaderComp/>:(
+
+                <div className='scrolling-content'>
+                  {
+                      displayedContent.map(item=>(
+                        <TableRowComp item={item} setIsVisible={setIsVisible} setId={setId}/>
+                    ))
+                  }
+                </div>
+              )
             }
-            </div>
             </div>
           </div>
         </div>

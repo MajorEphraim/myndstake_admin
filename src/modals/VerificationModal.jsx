@@ -61,7 +61,7 @@ function VerificationModal({setIsVisible, id}){
                 </div>
             </div>
 
-            <div className="verify-container"/>
+            <div className="verify-doc-container"/>
         </>
     )
 }

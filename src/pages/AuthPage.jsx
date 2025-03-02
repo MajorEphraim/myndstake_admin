@@ -52,8 +52,8 @@ function AuthPage(){
             <h5 className='words'>and app content</h5>
           </div>
           <div className='form'>
-            <input placeholder='email' className='cred-input' onChange={e=>setEmail(e.target.value)}/>
-            <input placeholder='password' className='cred-input' onChange={e=>setPassword(e.target.value)}/>
+            <input placeholder='email' className='cred-input' onChange={e=>setEmail(e.target.value)} value={email}/>
+            <input placeholder='password' className='cred-input' onChange={e=>setPassword(e.target.value)} value={password}/>
             <div className='login-btn' onClick={handleSignIn}>
               <h5 className='btn-text'>Sign in</h5>
             </div>

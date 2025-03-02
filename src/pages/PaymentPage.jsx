@@ -6,13 +6,14 @@ import EwalletComp from "../components/EwalletComp"
 import CashSendComp from "../components/CashSendComp"
 import { PaymentsContext } from "../context/PaymentsContext"
 import BankingDetailsModal from "../modals/BankingDetailsModal"
+import LoaderComp from "../components/LoaderComp"
 
 function PaymentPage(){
 
   const [colNo, setColNo] = useState(1)
   const [isVisible, setIsVisible] = useState(false)
   const [id, setId] = useState('')
-  const {payments} = useContext(PaymentsContext)
+  const {payments, isLoading} = useContext(PaymentsContext)
 
   const bankArr = payments && payments.filter(item=>item.type === 'transfer')
   const ewalletArr = payments && payments.filter(item=>item.type === 'e-wallet')
@@ -40,7 +41,8 @@ function PaymentPage(){
           data={payments} colNo={colNo} 
           setColNo={setColNo}
           />
-       {renderPaymentType()}
+
+       {isLoading ? <LoaderComp/>: renderPaymentType()}
       </div>
     </>
     )

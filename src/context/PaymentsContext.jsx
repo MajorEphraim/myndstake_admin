@@ -6,14 +6,8 @@ export const PaymentsContext = createContext()
 
 //provider for payments context
 export const PaymentsProvider = ({children})=>{
-    const [payments, setPayments] = useState([
-        {id:"1",type:'e-wallet', cellNo:'0123456789', amount:450, status:'Paid'},
-        {id:"2",type:'cash send', cellNo:'0123456789', amount:450, status:'Outstanding'},
-        {id:"3", type:'transfer', bankName:"Capitec bank", holderName:'Peter Smith', 
-            accNo:'0123456789', branchCode:"12345" ,amount:450, status:'Outstanding'},
-            {id:"4", type:'transfer', bankName:"FNB", holderName:'John Cruger', 
-                accNo:'0123456789', branchCode:"12345" ,amount:450, status:'Outstanding'},
-    ])
+    const [payments, setPayments] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
 
@@ -24,7 +18,8 @@ export const PaymentsProvider = ({children})=>{
                 array.push({...doc.data(), id:doc.id});
             });
 
-            //setPayments(array)
+            setPayments(array)
+            setIsLoading(false)
         });
 
         return ()=>{
@@ -34,7 +29,7 @@ export const PaymentsProvider = ({children})=>{
     },[])
 
     return(
-        <PaymentsContext.Provider value={{payments}}>
+        <PaymentsContext.Provider value={{payments, isLoading}}>
             {children}
         </PaymentsContext.Provider>
     )

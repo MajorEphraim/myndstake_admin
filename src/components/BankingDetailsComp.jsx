@@ -8,7 +8,7 @@ function BankingDetailsComp({id, setIsVisible}) {
     const { payments } = useContext(PaymentsContext)
 
     const {holderName, accNo, branchCode, amount, bankName} = payments.filter(item=>item.id === id)[0]
-    console.log({holderName, accNo, branchCode, amount, bankName})
+    
     const arr = [
         {name:"Account Holder Name", value:holderName},
         {name:"Account Number", value:accNo},

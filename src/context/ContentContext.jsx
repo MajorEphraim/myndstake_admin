@@ -6,25 +6,9 @@ export const ContentContext = createContext()
 
 //provider for content context
 export const ContentProvider = ({children})=>{
-    const [content, setContent] = useState([
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
+    const [content, setContent] = useState([])
 
-    ])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
 
@@ -35,7 +19,8 @@ export const ContentProvider = ({children})=>{
                 array.push({...doc.data(), id:doc.id});
             });
 
-            //setContent(array)
+            setContent(array)
+            setIsLoading(false)
         });
 
         return ()=>{
@@ -45,7 +30,7 @@ export const ContentProvider = ({children})=>{
     },[])
 
     return(
-        <ContentContext.Provider value={{content}}>
+        <ContentContext.Provider value={{content, isLoading}}>
             {children}
         </ContentContext.Provider>
     )

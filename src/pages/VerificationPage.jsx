@@ -3,12 +3,12 @@ import GroupedIdentificationComp from '../components/GroupedIdentificationsComp'
 import VerificationModal from '../modals/VerificationModal'
 import { useState, useContext } from 'react'
 import { DocumentationsContext } from '../context/DocumentationsContext'
- 
+import LoaderComp from '../components/LoaderComp' 
 
 function VerificationPage(){
   const [isVisble, setIsVisible] = useState(false)
   const [openedDetails, setOpenedDetails] = useState(null)
-  const { documentations } = useContext(DocumentationsContext)
+  const { documentations, isLoading } = useContext(DocumentationsContext)
   
   const groupData = ()=>{
   
@@ -38,16 +38,20 @@ function VerificationPage(){
                   <h6 className="verification-words">Outstanding verifications</h6>
               </div>
           </div>
-          <div className='scrolling-details'>
+          {
+            isLoading ? <LoaderComp/> : (
+
+              <div className='scrolling-details'>
               {
                 groupData().map(arr=><GroupedIdentificationComp 
-                                    arr={arr} 
-                                    setIsVisible={setIsVisible}
-                                    setOpenedDetails={setOpenedDetails}
-                                    />)
+                  arr={arr} 
+                  setIsVisible={setIsVisible}
+                  setOpenedDetails={setOpenedDetails}
+                  />)
               }
-              
-          </div>
+              </div>
+              )
+            }
         </div>
       </>
     )

@@ -25,6 +25,7 @@ function HomeHeaderComp(){
     }
 
     const details = JSON.parse(localStorage.getItem("admin details"))
+    console.log(details)
     return(
         <div className="header">
           <div className="left-container">

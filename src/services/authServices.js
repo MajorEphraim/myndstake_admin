@@ -18,6 +18,8 @@ const signIn = async(email, password)=>{
 const signOutUser = async()=>{
     try {
         await signOut(auth)
+        localStorage.removeItem("userId")
+        localStorage.removeItem("admin details")
     } catch (error) {
         throw new Error(error);
     }
