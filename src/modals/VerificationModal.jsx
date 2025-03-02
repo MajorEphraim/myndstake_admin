@@ -9,7 +9,7 @@ function VerificationModal({setIsVisible, id}){
     const [viewed, setViewed] = useState(0)
     const { documentations } = useContext(DocumentationsContext)
     const documentation = documentations.filter(item=>item.id === id)[0]
-    const selfie = documentation.pic
+    const selfie = documentation.selfie
     const idPic = documentation.idPic
 
     const handleVerify = async()=>{

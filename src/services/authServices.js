@@ -7,6 +7,8 @@ const signIn = async(email, password)=>{
         const user = userCred.user
         const userId = user.uid
         const data = await getAdminDetails(userId)
+        localStorage.setItem("userId", userId)
+        localStorage.setItem("admin details", JSON.stringify(data))
         return {userId, data}
     } catch (error) {
         throw new Error(error);

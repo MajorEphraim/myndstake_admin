@@ -5,11 +5,13 @@ import BankTransferComp from "../components/BankTransferComp"
 import EwalletComp from "../components/EwalletComp"
 import CashSendComp from "../components/CashSendComp"
 import { PaymentsContext } from "../context/PaymentsContext"
+import BankingDetailsModal from "../modals/BankingDetailsModal"
 
 function PaymentPage(){
 
   const [colNo, setColNo] = useState(1)
-
+  const [isVisible, setIsVisible] = useState(false)
+  const [id, setId] = useState('')
   const {payments} = useContext(PaymentsContext)
 
   const bankArr = payments && payments.filter(item=>item.type === 'transfer')
@@ -18,7 +20,7 @@ function PaymentPage(){
 
   const renderPaymentType = ()=>{
     if(colNo === 1)
-     return <BankTransferComp data={bankArr}/>
+     return <BankTransferComp data={bankArr} setIsVisible={setIsVisible} setId={setId}/>
      else if(colNo === 2)
     return <EwalletComp data={ewalletArr}/>
     else
@@ -26,6 +28,10 @@ function PaymentPage(){
   }
 
     return(
+      <>
+      {
+        isVisible ? <BankingDetailsModal setIsVisible={setIsVisible} id={id}/> : null
+      }
       <div className="payments-container">
         <PaymentsTypesComp 
           totalBank={bankArr.filter(item=>item.status === "Outstanding").length} 
@@ -33,9 +39,10 @@ function PaymentPage(){
           totalCashSend={cashSendArr.filter(item=>item.status === "Outstanding").length}  
           data={payments} colNo={colNo} 
           setColNo={setColNo}
-        />
+          />
        {renderPaymentType()}
       </div>
+    </>
     )
 }
 

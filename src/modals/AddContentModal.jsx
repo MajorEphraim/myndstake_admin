@@ -1,8 +1,8 @@
-import UpdateContentComp from '../components/UpdateContentComp';
+import MobileAddContentComp from '../components/MobileAddContentComp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function UpdateContentModal({setIsVisible, id}){
+function AddContentModal({setIsVisible}){
  
     return(
         <>
@@ -10,7 +10,7 @@ function UpdateContentModal({setIsVisible, id}){
                 <div className='close-btn' onClick={()=>setIsVisible(false)}>
                     <FontAwesomeIcon icon={faXmark} size='4x'  color="#fff"/>
                 </div>
-                <UpdateContentComp id={id} setIsVisible={setIsVisible}/>
+                <MobileAddContentComp/>
             </div>
 
             <div className="verify-container"/>
@@ -18,4 +18,4 @@ function UpdateContentModal({setIsVisible, id}){
     )
 }
 
-export default UpdateContentModal
+export default AddContentModal

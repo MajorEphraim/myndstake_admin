@@ -7,7 +7,7 @@ function GroupedIdentificationComp({arr, setIsVisible,setOpenedDetails}){
             {
                 arr.map(item=><IdentificationComp 
                                 id ={item.id}
-                                pic = {item.pic}
+                                pic = {item.selfie}
                                 idPic = {item.idPic}
                                 email = {item.email}
                                 sentDate = {item.sentDate}

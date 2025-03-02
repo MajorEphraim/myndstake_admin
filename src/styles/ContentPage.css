@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    padding-top: 9vh;
 }
 
 .add-content {
@@ -13,7 +14,7 @@
     min-height: 460px;
     width: 310px;
     margin-left: 30px;
-    margin-top: 95px;
+    margin-top: 2vh;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -135,12 +136,13 @@
 
 .all-content {
     background-color: #fff;
-    height: 655px;
+    height: 89vh;
     width: 1100px;
     margin-right: 30px;
-    margin-top: 80px;
     border-radius: 10px;
     padding-bottom: 3px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 .content-upper-container {
@@ -227,7 +229,7 @@
 }
 
 .scrolling-content{
-  max-height: 500px; 
+  height: 71vh; 
   overflow-y: auto;  
   display: block;    
 }
@@ -241,13 +243,12 @@
 .content-headings-row {
     display: flex;
     flex-direction: row;
-    min-height: 20px;
 }
 
 .content-headings-row {
     padding-left: 5px;
     padding-right: 5px;
-    min-height: 85px;
+    min-height: 80px;
     border-bottom: #000 1px solid;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -412,9 +413,37 @@
     display: none;
 }
 
+.modal-add-content {
+    background-color: #fff;
+    min-height: 460px;
+    width: 310px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 @media (max-width:767px) {
+    
+
     .add-content {
         display: none;
+    }
+
+    .mobile-new-content {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        background-color: #FE3E12;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .content-upper-container {
@@ -449,15 +478,15 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        padding-top: 9vh;
+        background-color: #fff;
     }
-
     
     .all-content {
         background-color: #fff;
-        height: 87vh;
-        width: 95vw;
+        height: 100vh;
+        width: 100vw;
         margin-right:0;
-        margin-top: 5vh;
         border-radius: 10px;
         padding-bottom: 3px;
     }
@@ -578,9 +607,13 @@
     }
 
     .scrolling-content{
-        height: 70vh; 
+        height: 69vh; 
         overflow-y: auto;  
         display: block;    
+      }
+
+      .all-content {
+
       }
     
 }

@@ -3,19 +3,16 @@ import RadionButtonComp from "./RadioButtonComp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { GenresContext } from "../context/GenresContext";
-import { ContentContext } from "../context/ContentContext";
-import { updateContent } from '../services/firestoreServices'
+import { addNewContent } from '../services/firestoreServices'
 
-function UpdateContentComp({id, setIsVisible}) {
+function MobileAddContentComp() {
+    const [options, setOptions] = useState([])
+
     const [option, setOption] = useState('')
+    const [question, setQuestion] = useState('')
+    const [genre, setGenre] = useState(null)
     const { genres } = useContext(GenresContext)
-    const { content } = useContext(ContentContext)
-    
-    const openedContent = content.filter(item=>item.id === id)[0]
-    const [question, setQuestion] = useState(openedContent.question ?openedContent.question:{})
-    const [genre, setGenre] = useState(openedContent.genre)
-    const [options, setOptions] = useState(openedContent.options.map(name=>({name,isSelected:name === openedContent.correct})))
-    
+
     //check if option is empty or it exists before adding it
     const addOption =()=>{
         if(!options.map(item=>item.name).includes(option) && option.length>0)
@@ -43,7 +40,7 @@ function UpdateContentComp({id, setIsVisible}) {
 
     }
 
-    const handleUpdate = async()=>{
+    const handleSubmit = async()=>{
 
         const isSelectedArr = options.filter(option=> option.isSelected)
         if(genre === null || genre === "Choose Genre"){
@@ -67,29 +64,21 @@ function UpdateContentComp({id, setIsVisible}) {
         }
 
         try {
-            await updateContent({question, 
+        
+            await addNewContent({question, 
                                  genre, 
                                  options: options.map(option=>option.name),
-                                 correct:isSelectedArr[0].name},id)
-                                 
-            setIsVisible(false)
-
-
+                                 correct:isSelectedArr[0].name})
         } catch (error) {
             alert(error.message)
         }
     }
 
- 
     return (
      <div className="modal-add-content">
         <div className="add-content-actions">
-            <h4 className='add-content-text'>Update Content</h4>
-            <select 
-            className='choose-genre-dropdown' 
-            onChange={e=>setGenre(e.target.value)}
-            value={genre}
-            >
+            <h4 className='add-content-text'>Add Content</h4>
+            <select className='choose-genre-dropdown' onChange={e=>setGenre(e.target.value)}>
             <option>Choose Genre</option>
             {
                 genres.map(genre=><option>{genre}</option>)
@@ -101,7 +90,6 @@ function UpdateContentComp({id, setIsVisible}) {
             className="question-input"
             placeholder="Type a question..." 
             onChange={e=>setQuestion(e.target.value)}
-            value={question}
             >
             </textarea> 
                 
@@ -128,10 +116,10 @@ function UpdateContentComp({id, setIsVisible}) {
                     options.length>3?null:(
                 <div className="option-input-container">
                       <input className="option-input" 
-                             placeholder="Type the option ..."
-                             onChange={e=>setOption(e.target.value)}
-                             value={option}
-                    />          
+                                       placeholder="Type the option ..."
+                                       onChange={e=>setOption(e.target.value)}
+                                       value={option}
+                                />          
                     <div className="add-option-btn" onClick={addOption}>
                         <FontAwesomeIcon icon={faPlus}  color="#fff"/>
                     </div>
@@ -141,11 +129,11 @@ function UpdateContentComp({id, setIsVisible}) {
             </div>
         </div>
        
-        <div className='submit-option-btn' onClick={handleUpdate}>
-            <h5 className='btn-text'>Update</h5>
+        <div className='submit-option-btn' onClick={handleSubmit}>
+            <h5 className='btn-text'>Submit</h5>
         </div>
      </div>
  )
 }
 
-export default UpdateContentComp
+export default MobileAddContentComp

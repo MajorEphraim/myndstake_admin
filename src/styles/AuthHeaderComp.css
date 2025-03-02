@@ -36,3 +36,13 @@
     font-weight:500;
     margin-right: 35px;
 }
+
+.auth-left-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media(max-width:767px){
+    
+}

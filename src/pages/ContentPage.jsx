@@ -6,6 +6,9 @@ import TableRowComp from '../components/TableRowComp';
 import { ContentContext } from '../context/ContentContext';
 import { GenresContext } from '../context/GenresContext';
 import UpdateContentModal from '../modals/UpdateContentModal';
+import AddContentModal from '../modals/AddContentModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function ContentPage(){
 
@@ -16,6 +19,7 @@ function ContentPage(){
   const [search, setSearch] = useState('')
   const [genre, setGenre] = useState('All')
   const [isVisible, setIsVisible] = useState(false)
+  const [isShown, setIsShown] = useState(false)
   const displayedContent = content
                             .filter(item=>item.question.
                                   toLowerCase()
@@ -27,6 +31,9 @@ function ContentPage(){
       <>
         {
           isVisible ? <UpdateContentModal setIsVisible={setIsVisible} id={id}/>:null
+        }
+        {
+          isShown ? <AddContentModal setIsVisible={setIsShown}/>:null
         }
         <div className="content-container">
           <AddContentComp/>
@@ -54,6 +61,9 @@ function ContentPage(){
                     }
                   </select>
                 </div>
+              </div>
+              <div className='mobile-new-content' onClick={()=>setIsShown(true)}>
+               <FontAwesomeIcon icon={faPlus} color="#fff"/>
               </div>
             </div>
               <input 

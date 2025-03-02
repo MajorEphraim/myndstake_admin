@@ -9,7 +9,7 @@ import { signOutUser } from "../services/authServices";
 
 
 function HomeHeaderComp(){
-    const { details, setDetails } = useContext(AccountContext)
+    const { updateDetails } = useContext(AccountContext)
     const { openDrawer } = useContext(DrawerContext)
     const { setUserId } = useContext(AuthContext)
 
@@ -17,12 +17,14 @@ function HomeHeaderComp(){
     
         try {
             await signOutUser()
-            setDetails({username:'', email:''})
+            updateDetails({username:'', email:''})
             setUserId(null)
         } catch (error) {
             alert(error.message)
         }
     }
+
+    const details = JSON.parse(localStorage.getItem("admin details"))
     return(
         <div className="header">
           <div className="left-container">
@@ -47,7 +49,7 @@ function HomeHeaderComp(){
           </div>
 
           <div className="account-container" onClick={handleSignOut}>
-            <h1 className="admin-name">{details.username}</h1>
+            <h1 className="admin-name">{details&&details.username}</h1>
                 <div className="logout-icon">
                     <FontAwesomeIcon icon={faRightFromBracket} color="#FE3E12" size="1x"/>
                 </div>

@@ -4,13 +4,15 @@ import { useState, useContext } from 'react'
 import { signIn } from '../services/authServices'
 import { AuthContext } from '../context/AuthContext'
 import { AccountContext } from '../context/AccountContext'
+import LoaderModal from '../modals/LoaderModal'
 
 function AuthPage(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isVisible, setIsVisible] = useState(false)
 
   const { setUserId } = useContext(AuthContext)
-  const { setDetails } = useContext(AccountContext)
+  const { updateDetails } = useContext(AccountContext)
 
   const handleSignIn = async()=>{
 
@@ -20,17 +22,30 @@ function AuthPage(){
     }
 
     try {
+        setIsVisible(true)
         const {userId,data} = await signIn(email, password)
+        setIsVisible(false)
         setUserId(userId)
-        setDetails(data)
+        updateDetails(data)
     } catch (error) {
+        setIsVisible(false)
         alert(error.message)
     }
   }
 
     return(
+      <>
+      {
+        isVisible ? <LoaderModal/> : null
+      }
       <div className='container'>
-        <img src={logo} alt='logo' className='logo'/>
+        <div className='logo-words'>
+          <img src={logo} alt='logo' className='logo'/>
+          <div className='m-words-container'>
+            <h5 className='words'>Manage user verification, payments</h5>
+            <h5 className='words'>and app content</h5>
+          </div>
+        </div>
         <div className='right-container'>
           <div className='words-container'>
             <h5 className='words'>Manage user verification, payments</h5>
@@ -45,6 +60,7 @@ function AuthPage(){
           </div>
         </div>
       </div>
+      </>
     )
 }
 

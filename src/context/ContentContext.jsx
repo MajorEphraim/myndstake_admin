@@ -23,8 +23,6 @@ export const ContentProvider = ({children})=>{
         {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
         {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
         {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
-        {question:"who is the best at Karate among those?", genre:"Hollywood Movies", options:["Jet Li", "Jason Statham", "John Cena", "Tom Cruise"], correct:"Jet Li"},
 
     ])
 

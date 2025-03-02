@@ -4,7 +4,7 @@ import '../styles/AuthHeaderComp.css'
 function AuthHeaderComp(){
     return(
         <div className="header">
-           <div className="left-container">
+           <div className="auth-left-container">
                 <h1 className="app-name">MyndStake</h1>
                 <h1 className="com-name">By StepTech</h1>
            </div>

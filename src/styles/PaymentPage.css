@@ -1,7 +1,7 @@
 .payments-container{
     height: 100vh;
     width: 100vw;
-    padding-top: 80px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,9 @@
     padding-right: 5px;
 }
 
-.heading, .info-container {
+.heading, .info-container, .heading-2, .info-container-2, .heading-3, .info-container-3, 
+.heading-4, .info-container-4, .heading-5, .info-container-5, .heading-6, .info-container-6, 
+.heading-7, .info-container-7 {
     flex: 1;
     display: flex;
     flex-direction: row;
@@ -61,4 +63,41 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+}
+
+.m-payment-btn-container {
+    display: none;
+}
+
+@media(max-width:767px){
+    .m-payment-btn-container {
+        display: block;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        
+    }   
+
+    .payment-btn-container {
+        display: none;
+    }
+
+    .heading-3, .info-container-3, .heading-4, .info-container-4, 
+    .heading-5, .info-container-5, .heading-6, .info-container-6 {
+        display: none
+    }
+
+    .heading, .info-container {
+        flex:1
+    }
+
+    .heading-2, .info-container-2 {
+        flex:5
+    }
+
+    .heading-7, .mobile-payment-btn-container {
+        flex:2;
+    }
 }

@@ -10,9 +10,16 @@ export const AccountProvider = ({children})=>{
         email:''
     })
 
+    const updateDetails = ()=>{
+        localStorage.removeItem('admin details')
+        localStorage.removeItem('userId')
+        setDetails({username:'',email:''})
+    }
+
     return(
-        <AccountContext.Provider value={{details, setDetails}}>
+        <AccountContext.Provider value={{details, updateDetails}}>
             {children}
         </AccountContext.Provider>
     )
 }
+
